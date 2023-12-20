@@ -26,13 +26,7 @@ const SingleProductPage = () => {
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
   }, [id]);
-  console.log(product);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     // History.push("/");
-  //   }, 3000);
-  // }, [error]);
   if (loading) {
     <Loading></Loading>;
   }
@@ -50,7 +44,7 @@ const SingleProductPage = () => {
     company,
     images,
   } = product;
-
+  console.log(product.colors);
   return (
     <Wrapper className="">
       <PageHero title={name} product>
@@ -60,16 +54,16 @@ const SingleProductPage = () => {
         <Link to="/products " className="btn">
           Back to Products
         </Link>{" "}
-        <div className="products-center">
-          <ProductImages></ProductImages>
+        <div className="product-center">
+          <ProductImages images={images} sku={sku}></ProductImages>
           <section className="content">
             <h2>{name}</h2>
-            <Stars></Stars>
+            <Stars stars={stars} reviews={reviews}></Stars>
             <h5 className="price">{formatPrice(price)}</h5>
             <p className="desc">{description}</p>
             <p className="info">
               <span>Available:</span>
-              {sku > 0 ? "In Stock" : "Out of Stock"}
+              {stock > 0 ? "In Stock" : "Out of Stock"}
             </p>
             <p className="info">
               <span>SKU:</span>
@@ -80,7 +74,7 @@ const SingleProductPage = () => {
               {company}
             </p>
             <hr />
-            {stock > 0 && <AddToCart></AddToCart>}
+            {stock > 0 && <AddToCart product={product}></AddToCart>}
           </section>
         </div>
       </div>

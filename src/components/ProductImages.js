@@ -1,9 +1,48 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { single_product_url as url } from "../utils/constants";
+import axios from "axios";
+import { useParams, useHistory } from "react-router-dom";
+import { useProductsContext } from "../context/products_context";
 
-const ProductImages = () => {
-  return <h4>product images</h4>
-}
+const ProductImages = ({ images = [{ url: "" }] }) => {
+  const { single_products: product } = useProductsContext();
+  const { id } = useParams();
+  const [main, setMain] = useState({});
+
+  const single = async (url) => {
+    try {
+      const response = await axios.get(url);
+      const singleProducts = response.data;
+      setMain(singleProducts.images[0]);
+    } catch (error) {
+      console.log("ERROR");
+    }
+  };
+
+  useEffect(() => {
+    single(`${url}${id}`);
+  }, []);
+
+  return (
+    <Wrapper>
+      <img className="image main" src={main.url} alt="Main Image" />
+      <div className="gallery">
+        {images.map((image, index) => {
+          return (
+            <img
+              key={index}
+              src={image.url}
+              alt={image.filename}
+              onClick={() => setMain(images[index])}
+              className={`${image.url === main.url ? "active" : null}`}
+            />
+          );
+        })}
+      </div>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   .main {
@@ -48,6 +87,6 @@ const Wrapper = styled.section`
       }
     }
   }
-`
+`;
 
-export default ProductImages
+export default ProductImages;
