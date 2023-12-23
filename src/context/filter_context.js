@@ -60,14 +60,23 @@ export const FilterProvider = ({ children }) => {
   };
 
   const updateFilters = (e) => {
-    const value = e.target.value;
+    let value = e.target.value;
     const name = e.target.name;
-
+    if (name == "color") {
+      value = e.target.dataset.color;
+    }
+    if (name === "price") {
+      value = Number(value);
+    }
+    if (name == "category") {
+      value = e.target.textContent;
+      dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
   const clearFilters = (e) => {
-    const name = e.target.name;
+    dispatch({ type: CLEAR_FILTERS });
   };
   return (
     <FilterContext.Provider

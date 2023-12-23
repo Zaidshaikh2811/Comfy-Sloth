@@ -44,7 +44,6 @@ const SingleProductPage = () => {
     company,
     images,
   } = product;
-  console.log(product.colors);
   return (
     <Wrapper className="">
       <PageHero title={name} product>
