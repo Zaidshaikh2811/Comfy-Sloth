@@ -3,7 +3,15 @@ import { BrowserRouter, Routes, Switch, Route } from "react-router-dom";
 import { Navbar, Sidebar, Footer } from "./components";
 import styled from "styled-components";
 
-import { About, Checkout, Home, Error, Products, SingleProduct } from "./pages";
+import {
+  About,
+  Checkout,
+  Home,
+  Error,
+  Products,
+  SingleProduct,
+  Cart,
+} from "./pages";
 
 const Layout = ({ children }) => (
   <div>
@@ -29,6 +37,7 @@ function App() {
             element={<SingleProduct></SingleProduct>}
           ></Route>
           <Route path="/checkout" element={<Checkout></Checkout>}></Route>
+          <Route path="/cart" element={<Cart></Cart>}></Route>
           <Route path="*" element={<Error></Error>}></Route>
         </Route>
       </Routes>
