@@ -11,6 +11,7 @@ import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 const Nav = () => {
   const data = useProductsContext();
+  const { myUser } = useUserContext();
   const { openSIdebar } = data;
   return (
     <>
@@ -37,6 +38,11 @@ const Nav = () => {
                 </li>
               );
             })}
+            {myUser && (
+              <li>
+                <Link to="/checkout">Check-Out</Link>
+              </li>
+            )}
           </ul>
           <CartButtons></CartButtons>
         </div>

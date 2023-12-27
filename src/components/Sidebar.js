@@ -10,6 +10,7 @@ import { useUserContext } from "../context/user_context";
 const Sidebar = () => {
   const data = useProductsContext();
   const { isSidebarOpen, closeSidebar } = data;
+  const { myUser } = useUserContext();
   const isOpen = false;
   return (
     <SidebarContainer>
@@ -30,7 +31,11 @@ const Sidebar = () => {
               </li>
             );
           })}
-          <Link to="/checkout"> Checkout</Link>
+          {myUser && (
+            <li>
+              <Link to="/checkout">Check-Out</Link>
+            </li>
+          )}
         </ul>
         <CartButtons></CartButtons>
       </aside>

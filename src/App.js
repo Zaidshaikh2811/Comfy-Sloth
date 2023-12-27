@@ -11,6 +11,7 @@ import {
   Products,
   SingleProduct,
   Cart,
+  PrivateRoute,
 } from "./pages";
 
 const Layout = ({ children }) => (
@@ -36,11 +37,15 @@ function App() {
             path="/products/:id"
             element={<SingleProduct></SingleProduct>}
           ></Route>
-          <Route path="/checkout" element={<Checkout></Checkout>}></Route>
+          <Route
+            path="/checkout"
+            element={<PrivateRoute element={<Checkout />} />}
+          />
           <Route path="/cart" element={<Cart></Cart>}></Route>
           <Route path="*" element={<Error></Error>}></Route>
         </Route>
       </Routes>
+
       <Footer></Footer>
     </BrowserRouter>
   );
