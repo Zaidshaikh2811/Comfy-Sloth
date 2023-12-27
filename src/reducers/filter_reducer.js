@@ -1,4 +1,3 @@
-import { useReducer } from "react";
 import {
   LOAD_PRODUCTS,
   SET_LISTVIEW,
@@ -11,7 +10,7 @@ import {
 } from "../actions";
 
 const filter_reducer = (state, action) => {
-  if (action.type == LOAD_PRODUCTS) {
+  if (action.type === LOAD_PRODUCTS) {
     let maxPrice = action.payload.map((p) => {
       return p.price;
     });

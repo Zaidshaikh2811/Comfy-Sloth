@@ -10,16 +10,16 @@ import {
 } from "../actions";
 
 const products_reducer = (state, action) => {
-  if (action.type == SIDEBAR_OPEN) {
+  if (action.type === SIDEBAR_OPEN) {
     return { ...state, isSidebarOpen: true };
   }
-  if (action.type == SIDEBAR_CLOSE) {
+  if (action.type === SIDEBAR_CLOSE) {
     return { ...state, isSidebarOpen: false };
   }
-  if (action.type == GET_PRODUCTS_BEGIN) {
+  if (action.type === GET_PRODUCTS_BEGIN) {
     return { ...state, products_loading: true };
   }
-  if (action.type == GET_PRODUCTS_ERROR) {
+  if (action.type === GET_PRODUCTS_ERROR) {
     return { ...state, products_loading: false, products_error: false };
   }
 

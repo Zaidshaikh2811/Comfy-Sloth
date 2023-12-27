@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { single_product_url as url } from "../utils/constants";
 import axios from "axios";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useProductsContext } from "../context/products_context";
 
 const ProductImages = ({ images = [{ url: "" }] }) => {
-  const { single_products: product } = useProductsContext();
+  // const { single_products: product } = useProductsContext();
   const { id } = useParams();
   const [main, setMain] = useState({});
 
@@ -22,7 +22,7 @@ const ProductImages = ({ images = [{ url: "" }] }) => {
 
   useEffect(() => {
     single(`${url}${id}`);
-  }, []);
+  }, [id]);
 
   return (
     <Wrapper>

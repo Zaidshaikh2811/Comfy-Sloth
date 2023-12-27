@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { useProductsContext } from "../context/products_context";
@@ -11,7 +11,6 @@ const Sidebar = () => {
   const data = useProductsContext();
   const { isSidebarOpen, closeSidebar } = data;
   const { myUser } = useUserContext();
-  const isOpen = false;
   return (
     <SidebarContainer>
       <aside

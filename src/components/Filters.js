@@ -57,7 +57,7 @@ const Filters = () => {
                     name="category"
                     type="button"
                     className={`${
-                      category == item.toLowerCase() ? `active` : null
+                      category === item.toLowerCase() ? `active` : null
                     }`}
                   >
                     {item}
@@ -88,7 +88,7 @@ const Filters = () => {
             <h5>colors</h5>
             <div className="colors">
               {colors.map((item, index) => {
-                if (item == "all") {
+                if (item === "all") {
                   return (
                     <button
                       key={index}
@@ -96,7 +96,7 @@ const Filters = () => {
                       onClick={updateFilters}
                       data-color="all"
                       className={`${
-                        color == "all" ? "all-btn active" : "all-btn"
+                        color === "all" ? "all-btn active" : "all-btn"
                       }`}
                     >
                       All
@@ -114,7 +114,7 @@ const Filters = () => {
                     name="color"
                     style={{ background: item }}
                   >
-                    {color == item ? <FaCheck></FaCheck> : null}
+                    {color === item ? <FaCheck></FaCheck> : null}
                   </button>
                 );
               })}

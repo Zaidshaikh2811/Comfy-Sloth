@@ -6,7 +6,7 @@ import ListView from "./ListView";
 const ProductList = () => {
   const { filtered_products: products, grid_view } = useFilterContext();
 
-  if (products.length == 0) {
+  if (products.length === 0) {
     return <h5 style={{ textTransform: "none" }}>No Products Available</h5>;
   }
   if (grid_view === false) {
