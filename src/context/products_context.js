@@ -13,7 +13,7 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
 } from "../actions";
-import { type } from "@testing-library/user-event/dist/type";
+// import { type } from "@testing-library/user-event/dist/type";
 
 const initialState = {
   isSidebarOpen: false,
